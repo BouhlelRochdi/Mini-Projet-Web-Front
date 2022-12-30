@@ -1,18 +1,59 @@
-<form [formGroup]="form">
-    <fieldset>
-        <legend>Login</legend>
-        <div class="form-field">
-            <label>Email:</label>
-            <input name="email" formControlName="email">
+<lib-public-forms-card pageTitle="Login">
+    <div c-content>
+        <div class="p-grid">
+
+            <div class="p-col-12">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <mat-form-field>
+                        <input matInput placeholder="Login" formControlName="email" />
+                        <div *ngIf="submitted && loginForm.controls.email.errors">
+                            <mat-error *ngIf="loginForm.controls.email.errors.required">
+                                Email is required
+                            </mat-error>
+                        </div>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Password" formControlName="password" type="password" />
+                        <div *ngIf="submitted && loginForm.controls.password.errors">
+                            <mat-error *ngIf="loginForm.controls.password.errors.required">
+                                Password is required
+                            </mat-error>
+                        </div>
+                    </mat-form-field>
+
+
+                    <div class="frl-page-hf">
+                        <div class="frl-container-hf">
+                            <div class="prf-content-auto-center">
+                                <mat-spinner class="center-content"
+                                    [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-grid p-justify-around">
+                        <button mat-raised-button type="submit" color="primary" [disabled]="!loginForm.valid">
+                            <mat-icon>exit_to_app</mat-icon>
+                            Login
+                        </button>
+                    </div>
+                </form>
+            </div>
+
         </div>
-        <div class="form-field">
-            <label>Password:</label>
-            <input name="password" formControlName="password" 
-                   type="password">
-        </div>
-    </fieldset>
-    <div class="form-buttons">
-        <button class="button button-primary" 
-                (click)="login()">Login</button>
     </div>
-</form>
+
+    <div c-bottombar>
+        <div class="p-justify-between p-grid p-align-center">
+            <span>
+                Create an account
+            </span>
+            <span class="left-flex-spacer"></span>
+            <button mat-raised-button [routerLink]="['/public/register']">
+                <mat-icon>how_to_reg</mat-icon>
+                Register
+            </button>
+        </div>
+    </div>
+
+</lib-public-forms-card>

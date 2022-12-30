@@ -1,0 +1,16 @@
+<mat-card class="ms-public-forms-card">
+  <mat-card-header>
+  </mat-card-header>
+  <mat-card-content class="mr-top-16">
+    <ng-content select="[c-content]"></ng-content>
+  </mat-card-content>
+
+  <div class="p-grid p-align-center">
+    <div class="p-col-12 mr-bottom-16">
+      <mat-divider [inset]="true"></mat-divider>
+    </div>
+    <div class="p-col-12">
+      <ng-content select="[c-bottombar]"></ng-content>
+    </div>
+  </div>
+</mat-card>

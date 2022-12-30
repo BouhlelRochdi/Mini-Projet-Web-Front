@@ -7,6 +7,8 @@ import { AuthModule } from 'projects/auth/src/lib/auth.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { errorInterceptorProvider, jwtInterceptorProvider, MaterialModule, redirectInterceptorProvider } from 'projects/shared/src';
 
 @NgModule({
   declarations: [
@@ -21,9 +23,15 @@ import { AppComponent } from './app.component';
     //forms
     FormsModule,
     ReactiveFormsModule,
+    MaterialModule,
     HttpClientModule,
+    BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [
+    jwtInterceptorProvider,
+    errorInterceptorProvider,
+    redirectInterceptorProvider,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

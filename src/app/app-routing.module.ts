@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, ExtraOptions } from '@angular/router';
+import { LocationStrategy, Location, PathLocationStrategy } from '@angular/common';
 
 const routes: Routes = [
   // { path: '', redirectTo: 'u', pathMatch: 'full' },
@@ -55,6 +56,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [Location, { provide: LocationStrategy, useClass: PathLocationStrategy }]
 })
 export class AppRoutingModule { }
