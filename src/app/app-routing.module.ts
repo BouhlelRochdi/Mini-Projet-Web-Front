@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LocationStrategy, Location, PathLocationStrategy } from '@angular/common';
 import { NotfoundpageComponent } from './components/notfoundpage/notfoundpage.component';
 import { NgAuthGuard } from 'projects/shared/src/lib/services/auth.guard';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'private', pathMatch: 'full' },
@@ -16,12 +17,14 @@ const routes: Routes = [
   },
   {
     path: 'private',
+    component: HomeComponent,
     canActivate: [NgAuthGuard],
     children: [
     ]
   },
   {
     path: 'notfound',
+    component: HomeComponent,
     children: [
       { path: '', pathMatch: 'full', redirectTo: '404' },
       { path: '404', component: NotfoundpageComponent }
