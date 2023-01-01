@@ -6,11 +6,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthRoutingModule } from './auth.module-routing';
 import { MaterialModule } from 'projects/shared/src';
 import { PublicFormsCardComponent } from './components/public-forms-card/public-forms-card.component';
+import { RegisterComponent } from './components/register/register.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
+    RegisterComponent,
     PublicFormsCardComponent
   ],
   imports: [

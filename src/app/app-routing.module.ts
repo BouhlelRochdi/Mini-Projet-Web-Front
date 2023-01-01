@@ -1,42 +1,13 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes, ExtraOptions } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { LocationStrategy, Location, PathLocationStrategy } from '@angular/common';
+import { NotfoundpageComponent } from './components/notfoundpage/notfoundpage.component';
+import { NgAuthGuard } from 'projects/shared/src/lib/services/auth.guard';
 
 const routes: Routes = [
-  // { path: '', redirectTo: 'u', pathMatch: 'full' },
-  // {
-  //   path: '',
-  //   //component: HomeComponent,
-  //   //canActivate: [NgAuthGuard],
-  //   children: [
-  //     {
-  //       path: 'setting',
-  //       loadChildren: () => import('./modules/profily-account/profily-account.module').then(m => m.ProfilyAccountModule)
-  //     },
-  //     {
-  //       path: 'search',
-  //       loadChildren: () => import('./modules/search/prf-search.module').then(m => m.PrfSearchModule)
-  //     },
-  //     {
-  //       path: 'change-password',
-  //       loadChildren: () => import('@mslibs/ms-auth').then(m => m.ChangePasswordModule)
-  //     }
-  //   ]
-  // },
-  // {
-  //   path: 'u',
-  //   component: HomeComponent,
-  //   children: [
-  //     {
-  //       path: ':id',
-  //       loadChildren: () => import('@mslibs/profily/front/employee').then(m => m.ProfileModule)
-  //     }
-  //   ]
-  // },
-  // TODO Extract activation part to isolate module
+  { path: '', redirectTo: 'private', pathMatch: 'full' },
   {
     path: 'public',
-    //component: HomeComponent,
     children: [
       {
         path: '', loadChildren: () => import('projects/auth/src/lib/auth.module').then(m => m.AuthModule)
@@ -44,14 +15,19 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'notfound',
-    //component: HomeComponent,
+    path: 'private',
+    canActivate: [NgAuthGuard],
     children: [
-      { path: '', pathMatch: 'full', redirectTo: '404' },
-      //{ path: '404', component: NotfoundpageComponent }
     ]
   },
-  { path: '**', redirectTo: '' }
+  {
+    path: 'notfound',
+    children: [
+      { path: '', pathMatch: 'full', redirectTo: '404' },
+      { path: '404', component: NotfoundpageComponent }
+    ]
+  },
+  { path: '**', redirectTo: 'notfound' }
 ];
 
 @NgModule({

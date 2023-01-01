@@ -5,7 +5,10 @@ import { CreateUserDto, UserBase } from 'projects/shared/src';
 import { BehaviorSubject, catchError, map, Observable, throwError } from 'rxjs';
 
 export const AccessTokenLocalStorage = 'access_token';
-const headers = new HttpHeaders().set('access-control-allow-origin',"http://localhost:3333/");
+const headers = new HttpHeaders().set('access-control-allow-origin',"*");
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json',})
+}
 
 @Injectable({
   providedIn: 'root'
@@ -40,10 +43,8 @@ export class AuthService {
 
   /* local login */
   login(email: string, password: string) {
-    return this.http.post<any>('http://localhost:3333/auth/signin', { email, password }, {
-      headers: { ...headers, 'X-Test-header': 'Test'
-    }
-    })
+    return this.http.post<any>('api/auth/signin', { email, password }, httpOptions)
+    
     .pipe(
       map(res => {
         // login successful if there's a jwt token in the response
@@ -62,7 +63,7 @@ export class AuthService {
 
   /* Register */
   register(user: CreateUserDto): Observable<any> {
-    return this.http.post<UserBase>('api/user', user).pipe(
+    return this.http.post<UserBase>('api/user/register', user).pipe(
       catchError((error) => this.handleError(error))
     );
   }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs';
 import { AuthService } from '../../auth.service';
@@ -38,7 +38,6 @@ export class LoginComponent {
   onSubmit() {
     console.log('submited')
     this.submitted = true;
-    // stop here if form is invalid
     if (this.loginForm.invalid) {
       return;
     }
@@ -54,6 +53,7 @@ export class LoginComponent {
           }
         },
         error => {
+          console.log('error: ', error)
           this.error = error;
           this.showSpinner = false;
         }
