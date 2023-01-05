@@ -6,6 +6,9 @@
       "auth": [
         "dist/auth"
       ],
+      "management": [
+        "dist/management"
+      ],
       "shared": [
         "dist/shared"
       ],
