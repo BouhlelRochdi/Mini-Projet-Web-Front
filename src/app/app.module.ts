@@ -10,10 +10,15 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { errorInterceptorProvider, jwtInterceptorProvider, MaterialModule, redirectInterceptorProvider } from 'projects/shared/src';
 import { NotfoundpageComponent } from './components/notfoundpage/notfoundpage.component';
+import { HeaderComponent } from './components/header/header.component';
+import { HomeComponent } from './components/home/home.component';
+import { UserModule } from 'projects/user/src';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
+    HomeComponent,
     NotfoundpageComponent
   ],
   imports: [
@@ -21,6 +26,7 @@ import { NotfoundpageComponent } from './components/notfoundpage/notfoundpage.co
     BrowserModule,
     AppRoutingModule,
     AuthModule,
+    UserModule,
 
     //forms
     FormsModule,

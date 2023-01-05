@@ -1,0 +1,23 @@
+.center-card {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mr-top-16 {
+    margin-top: 16px;
+}
+
+.view-profile {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 16px;
+}
+
+.team-page {
+    //  min-width: 360px;
+    max-width: 1324px;
+    width: 100%;
+}
