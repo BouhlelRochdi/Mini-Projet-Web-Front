@@ -21,7 +21,7 @@ const routes: Routes = [
     canActivate: [NgAuthGuard],
     children: [
       {
-        path: 'user', loadChildren: () => import('projects/user/src/lib/user.module').then(m => m.UserModule)
+        path: '', loadChildren: () => import('projects/user/src/lib/user.module').then(m => m.UserModule)
       }
     ]
   },

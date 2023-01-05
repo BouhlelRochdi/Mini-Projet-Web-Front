@@ -44,7 +44,7 @@ export class LoginComponent {
         data => {
           if(data){
             this.error = '';
-            this.router.navigate(['/public/user']);
+            this.router.navigate(['/private/user']);
           }
         },
         error => {
