@@ -7,6 +7,7 @@ import { AuthRoutingModule } from './auth.module-routing';
 import { MaterialModule } from 'projects/shared/src';
 import { PublicFormsCardComponent } from './components/public-forms-card/public-forms-card.component';
 import { RegisterComponent } from './components/register/register.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { RegisterComponent } from './components/register/register.component';
     HttpClientModule,
     AuthRoutingModule,
     MaterialModule,
+    FlexLayoutModule
   ],
   exports: [
   ]

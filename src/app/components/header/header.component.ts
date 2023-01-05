@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { UserBase } from 'projects/shared/src';
 import { UserService } from 'projects/user/src';
 import { Observable } from 'rxjs';
@@ -13,7 +13,8 @@ import { Observable } from 'rxjs';
 export class HeaderComponent implements OnInit {
 
   showFiller = false;
-  currentUser$: Observable<UserBase>
+  currentUser$: Observable<UserBase>;
+  @Output() onLogout: EventEmitter<boolean> = new EventEmitter();
 
   constructor(
     private userService: UserService
@@ -21,6 +22,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser$ = this.userService.getConnectedUser();
+  }
+
+  logout() {
+    this.onLogout.emit(true);
   }
 
 }

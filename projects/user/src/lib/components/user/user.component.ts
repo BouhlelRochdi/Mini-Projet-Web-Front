@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { UpdateUserDto } from 'projects/shared/src';
+import { AccountTypes, UpdateUserDto } from 'projects/shared/src';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { UserService } from '../../user.service';
@@ -12,6 +12,7 @@ import { UserService } from '../../user.service';
 })
 export class UserComponent implements OnInit {
 
+  accountTypes = [AccountTypes.CTO, AccountTypes.PROJECT_MANAGER, AccountTypes.DEVELOPER, AccountTypes.DESIGNER];
   profileSettingForm: FormGroup;
   submitted = false;
   showSpinner = false;
@@ -27,9 +28,16 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     this.profileSettingForm = this.formBuilder.group({
-      firstName: ['', [Validators.required, Validators.maxLength(30)]],
-      lastName: ['', [Validators.required, Validators.maxLength(30)]],
-      email: [{ value: '', disabled: true }, Validators.required]
+      firstName: ['', Validators.required],
+      lastName: [''],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+      comfirmPassword: ['', Validators.required],
+      adress: [''],
+      phone: [''],
+      matFiscal: ['', Validators.required],
+      accountType: ['', Validators.required],
+      jobtitle: ['', Validators.required],
     });
     this.profileUser$ = this.userService.getConnectedUser().pipe(
       tap(res => {
