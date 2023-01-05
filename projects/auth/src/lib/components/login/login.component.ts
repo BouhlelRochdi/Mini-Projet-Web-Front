@@ -29,14 +29,9 @@ export class LoginComponent {
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
-    // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'];
-    // reset login status
-    this.authenticationService.logout(this.returnUrl);
   }
 
   onSubmit() {
-    console.log('submited')
     this.submitted = true;
     if (this.loginForm.invalid) {
       return;
@@ -49,7 +44,7 @@ export class LoginComponent {
         data => {
           if(data){
             this.error = '';
-            this.router.navigate([this.returnUrl]);
+            this.router.navigate(['/public/user']);
           }
         },
         error => {

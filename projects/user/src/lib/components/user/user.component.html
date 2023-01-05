@@ -1,0 +1,106 @@
+<!-- <div class="overview-header prf-summ-page"> -->
+  <div style="display: flex; flex-direction: column">
+  <!-- <div class="overview-header">
+    <h4>Profile</h4>
+  </div> -->
+
+  <ng-container *ngIf="profilyUser$ | async as profile; else Loading">
+    
+    <!-- <div fxLayout="column" fxLayoutGap="20px">
+       <mat-card>
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="16px" fxLayoutAlign="space-between center">
+          <mat-spinner *ngIf="showSpinner" class="center-content"></mat-spinner>
+          <img *ngIf="!showSpinner" [src]="profile.photo ? profile?.photo : '/assets/images/avatar.jpg' " #photo
+            fxLayoutAlign="center center" class="prf-main-image cursor_pointer"
+            matTooltip="{{ 'PRF_PHOTO.CLIK_TO_EDIT' | translate}}" (click)="editProfilePhoto()" />
+
+          <span> {{ profile.author.username }} </span>
+          <span class="left-flex-spacer"></span>
+
+           <div fxLayout="column" fxLayoutGap="16px" fxLayoutAlign="space-between center">
+           <mat-chip-list>
+              <mat-chip>
+                {{'PROFILE.CONNECTOR' | translate}}: &nbsp;
+                <ng-container [ngSwitch]="profile.author.provider">
+                  <mat-icon *ngSwitchCase="'local'" color="accent">settings_input_svideo</mat-icon>
+                  <mat-icon *ngSwitchCase="'facebook'" svgIcon="facebooklogo"></mat-icon>
+                  <mat-icon *ngSwitchCase="'google'" svgIcon="googlelogo"></mat-icon>
+                </ng-container>
+              </mat-chip>
+            </mat-chip-list>
+          <mat-form-field class="language-input justify-content-center">
+            <mat-select matTooltip="{{'MAIN.CHANGE_LANG' | translate}}" [value]="translateService.selectedLang | async">
+              <mat-option [value]="elem.value" *ngFor="let elem of languages" (click)="changeLang(elem.value)">{{
+                elem.key | translate }}
+              </mat-option>
+            </mat-select>
+            <mat-label>
+              <mat-icon>language</mat-icon><i> {{"MAIN.SELECT_LANG" |translate}} </i>
+            </mat-label>
+          </mat-form-field>
+           </div>
+
+        </div>
+      </mat-card> -->
+
+      <mat-card>
+        <form [formGroup]="profilySettingForm">
+
+          <mat-form-field>
+            <input matInput placeholder="firstName" formControlName="firstName" />
+            <div *ngIf="submitted && profilySettingForm.controls.firstName.errors">
+              <mat-error *ngIf="profilySettingForm.controls.firstName.errors.required"> firstName required </mat-error>
+            </div>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="lastName" formControlName="lastName" />
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput type="email" placeholder="Email" formControlName="email" />
+            <div *ngIf="submitted && profilySettingForm.controls.email.errors">
+              <mat-error *ngIf="profilySettingForm.controls.email.errors.required">Email required
+              </mat-error>
+            </div>
+          </mat-form-field>
+
+          <!-- <mat-form-field appearance="fill">
+            <mat-label> {{'PROFILE.PUBLISH' | translate}} </mat-label>
+            <mat-select formControlName="isPublic">
+              <mat-option *ngFor="let elem of published" [value]="elem.value">{{ elem.key | translate }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="cursor_pointer" [routerLink]="['../change-password']">
+            <mat-label> Change password </mat-label>
+            <input class="cursor_pointer" matInput aria-label="change-password" type="password" formControlName="changePassword" readonly>
+            <button mat-icon-button matSuffix aria-label="edit">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </mat-form-field> -->
+
+          <div class="p-grid p-justify-around">
+            <button mat-raised-button (click)="onSubmit()" color="primary"
+              [disabled]="!profilySettingForm.valid || (profilySettingForm.dirty && !profilySettingForm.valid) || !profilySettingForm.dirty">
+              <mat-icon>how_to_reg</mat-icon> Update
+            </button>
+          </div>
+
+        </form>
+      </mat-card>
+      
+    </ng-container>
+  </div>
+
+  <ng-template #Loading>
+    <div class="frl-page-hf">
+      <div class="frl-container-hf">
+        <div class="prf-content-auto-center">
+          <mat-spinner class="center-content"></mat-spinner>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+<!-- </div> -->

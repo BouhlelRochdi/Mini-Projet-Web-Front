@@ -8,6 +8,9 @@
       ],
       "shared": [
         "dist/shared"
+      ],
+      "user": [
+        "dist/user"
       ]
     },
     "baseUrl": "./",

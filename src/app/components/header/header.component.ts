@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UserBase } from 'projects/shared/src';
+import { UserService } from 'projects/user/src';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -9,10 +12,15 @@ import { Component, OnInit } from '@angular/core';
 
 export class HeaderComponent implements OnInit {
 
+  showFiller = false;
+  currentUser$: Observable<UserBase>
+
   constructor(
+    private userService: UserService
   ) { }
 
   ngOnInit() {
+    this.currentUser$ = this.userService.getConnectedUser();
   }
 
 }

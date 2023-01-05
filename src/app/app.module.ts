@@ -12,6 +12,7 @@ import { errorInterceptorProvider, jwtInterceptorProvider, MaterialModule, redir
 import { NotfoundpageComponent } from './components/notfoundpage/notfoundpage.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
+import { UserModule } from 'projects/user/src';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { HomeComponent } from './components/home/home.component';
     BrowserModule,
     AppRoutingModule,
     AuthModule,
+    UserModule,
 
     //forms
     FormsModule,
