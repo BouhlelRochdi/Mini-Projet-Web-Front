@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserBase } from 'projects/shared/src';
+import { UpdateUserDto, UserBase } from 'projects/shared/src';
 import { catchError, Observable, throwError } from 'rxjs';
 
 @Injectable({
@@ -20,11 +20,11 @@ export class UserService {
     );
   }
 
-  // register(user: CreateUserDto): Observable<any> {
-  //   return this.http.post<UserBase>('api/user/register', user).pipe(
-  //     catchError((error) => this.handleError(error))
-  //   );
-  // }
+  updateCurrentUser(user: UpdateUserDto): Observable<any> {
+    return this.http.post<UpdateUserDto>('api/user/update', user).pipe(
+      catchError((error) => this.handleError(error))
+    );
+  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

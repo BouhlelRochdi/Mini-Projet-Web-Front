@@ -61,8 +61,7 @@
         </div>
 
         <div>
-          <button mat-raised-button (click)="onSubmit()" color="primary"
-            [disabled]="!profileSettingForm.valid || (profileSettingForm.dirty && !profileSettingForm.valid) || !profileSettingForm.dirty">
+          <button mat-raised-button (click)="onSubmit()" color="primary" [disabled]="!profileSettingForm.valid">
             <mat-icon>how_to_reg</mat-icon> Update
           </button>
         </div>

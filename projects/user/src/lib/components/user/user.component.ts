@@ -19,7 +19,6 @@ export class UserComponent implements OnInit {
 
   profileUser$: Observable<UpdateUserDto>;
   fullProfile: UpdateUserDto;
-  errorMessage: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,8 +30,6 @@ export class UserComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: [''],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      comfirmPassword: ['', Validators.required],
       adress: [''],
       phone: [''],
       matFiscal: ['', Validators.required],
@@ -55,7 +52,15 @@ export class UserComponent implements OnInit {
     if (this.profileSettingForm.invalid) {
       return;
     } else {
-      console.log('full profile to update: ', this.profileSettingForm.value)
+      this.userService.updateCurrentUser(this.profileSettingForm.value).subscribe({
+        complete: () => {
+          console.log('Update success')
+        },
+        error: (error) => {
+          console.error('error => ', error);
+          this.showSpinner = false;
+        }
+      })
     }
   }
 }
