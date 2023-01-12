@@ -1,0 +1,21 @@
+<div class="project-list" >
+    <h1 class="project-list-title">Liste des projets
+    </h1>
+    <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              This is the first Project
+            </mat-panel-title>
+            <mat-panel-description>
+              Project Manager
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p> what is this project (description)</p>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+         
+        </mat-expansion-panel>
+      </mat-accordion>
+</div>  

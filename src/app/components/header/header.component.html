@@ -1,5 +1,5 @@
 <ng-container *ngIf=" currentUser$ | async as currentUser; else loading">
-  <mat-toolbar>
+  <mat-toolbar class="header-section">
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button>
@@ -18,9 +18,9 @@
     </button>
 
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>
+      <button [routerLink]="['/private/user']" mat-menu-item>
         <mat-icon>person</mat-icon>
-        <span>Profile</span>
+        <span >Profile</span>
       </button>
 
       <button mat-menu-item>

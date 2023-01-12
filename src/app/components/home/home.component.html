@@ -4,12 +4,15 @@
         <header>
             <lib-home-header (onLogout)="toggleLogout()"></lib-home-header>
         </header>
-
+        
         <div class="prf-container-hf-content">
+            <app-side-nav style="background-color: #04385e !important;" fxFlex="9%" (onLogout)="toggleLogout()"></app-side-nav>
+       
+            <div fxFlex="91%" > 
             <router-outlet></router-outlet>
+            </div>
         </div>
-
-
+      
 
     </div>
 

@@ -1,0 +1,13 @@
+.project-list-title{
+    background: linear-gradient(to right,#007de5 0%,rgb(249 171 0 / 20%) 100%);
+    min-height: 117px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    padding: 1rem 4rem;
+    font-size: 1.375rem!important;
+    line-height: 1.75rem!important;
+    color: white;
+    
+}

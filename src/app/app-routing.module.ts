@@ -22,6 +22,9 @@ const routes: Routes = [
     children: [
       {
         path: '', loadChildren: () => import('projects/user/src/lib/user.module').then(m => m.UserModule)
+      },
+      {
+        path: 'prj', loadChildren: () => import('projects/management/src/lib/management.module').then(m => m.ManagementModule)
       }
     ]
   },
