@@ -11,15 +11,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { errorInterceptorProvider, jwtInterceptorProvider, MaterialModule, redirectInterceptorProvider } from 'projects/shared/src';
 import { NotfoundpageComponent } from './components/notfoundpage/notfoundpage.component';
 import { HeaderComponent } from './components/header/header.component';
+
 import { HomeComponent } from './components/home/home.component';
 import { UserModule } from 'projects/user/src';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    NotfoundpageComponent
+    NotfoundpageComponent,
+    SideNavComponent
   ],
   imports: [
     CommonModule,
@@ -34,6 +38,8 @@ import { UserModule } from 'projects/user/src';
     MaterialModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    FlexLayoutModule,
+
   ],
   providers: [
     jwtInterceptorProvider,
